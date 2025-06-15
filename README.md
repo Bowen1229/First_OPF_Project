@@ -59,7 +59,7 @@
     - `calculate_power_mismatch`: 根据当前节点电压估计值，计算有功/无功功率不平衡量。
     - `build_jacobian`:构建潮流方程的雅可比矩阵，用于线性化功率平衡方程。
     - `solve_powerflow`:这是整个程序的主函数，使用牛顿迭代方法，执行迭代流程： 初始化电压 $|V|$与相角$\theta$，计算当前不平衡量 $Delta P$, $Delta Q$ 构建雅可比矩阵 J 解线性系统：$$J\cdot\Delta x= \begin{bmatrix} \Delta P \\ \Delta Q \end{bmatrix}$$
-    - 更新变量：对 PQ 节点进行更新： $$\theta_𝑖^{( 𝑘 + 1 )} = \theta_𝑖 ^{( 𝑘 )} + \Delta \theta_𝑖 \\ V_𝑖^{( 𝑘 + 1 )} = V_𝑖 ^{( 𝑘 )} + \Delta V_𝑖$$
+    - 更新变量：对 PQ 节点进行更新： $$\theta_𝑖^{( 𝑘 + 1 )} = \theta_𝑖 ^{( 𝑘 )} + \Delta \theta_𝑖; \\ V_𝑖^{( 𝑘 + 1 )} = V_𝑖 ^{( 𝑘 )} + \Delta V_𝑖$$
     - 判断是否收敛，如果最大不平衡量 < tol，停止迭代。
 - **test_newton_solver.py**:测试脚本
 该脚本作为主程序入口，主要用于测试 newton_solver.py 中实现的潮流求解逻辑。它打印各节点最终的电压幅值与相角，用于验证求解效果与收敛性。
